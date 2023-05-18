@@ -1,5 +1,6 @@
 const express = require("expresss");
 const router = express.Router();
+const main = require("../scrapeFn/scrape");
 
 router.post("/indeed",async(req,res)=>{
     try{
