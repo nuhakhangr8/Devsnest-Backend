@@ -4,5 +4,12 @@
  
 ## Error 2
  messed up git
- initialized git on devsnest repository
- and initialized it inside the folder
+ 
+ initialized git on 
+ Devsnest-Backend repository
+ 
+ and also inside the d8-web-scraping folder
+ 
+ 
+ 
+ 
