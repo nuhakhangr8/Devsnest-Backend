@@ -1,11 +1,13 @@
 const express = require("express");
-const app = require(app);
-const {connectToDB} = require("./config/db.js");
+const app = express();
+const {connectToDB} = require("./config/db");
 const userRoutes = require("./routes/user");
 
-connectToDB();
+
 
 const PORT = 1338;
+connectToDB;
+
 
 //middlewares
 app.use(express.json());
