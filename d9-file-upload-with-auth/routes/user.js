@@ -65,7 +65,19 @@ router.post("/signin", async(req,res)=>{
             })
         };
 
-    
+        const existingUser = await User.findOne({where:{email}});
+        if(existingUser){
+            return res.status(400).json({
+                err:"user not found"
+            })
+        };
+
+        const passwordMismatch = await bcrypt.compare(password,existingUser.password);
+        if(!passwordMismatch){
+            return res.status(400).json({
+                err:"email or password mismatch"
+            })
+        };
 
     }catch(e){
         res.status(500).send(e);
