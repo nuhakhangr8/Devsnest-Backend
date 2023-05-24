@@ -50,5 +50,27 @@ router.post("/signup", async(req,res)=>{
 
 })
 
+router.post("/signin", async(req,res)=>{
+    try{
+        const { email, password} = req.body;
+
+        if(email.length ===0){
+            return res.status(400).json({
+                err:"please provide email"
+            })
+        }
+        if (password.length === 0){
+            return res.status(400).json({
+                err:"please provide password"
+            })
+        };
+
+    
+
+    }catch(e){
+        res.status(500).send(e);
+    }
+})
+
 
 module.exports = router;
