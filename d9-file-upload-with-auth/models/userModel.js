@@ -14,7 +14,7 @@ const User = createDB.define("users",{
     isSeller:{
         type:DataTypes.BOOLEAN,
         defaultValue:false
-    }
+    },
 });
 
 module.exports = User;
