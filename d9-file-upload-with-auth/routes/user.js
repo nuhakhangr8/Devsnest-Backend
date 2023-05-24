@@ -95,7 +95,7 @@ router.post("/signin", async(req,res)=>{
     }
 })
 
-router.post("/signout", (req,res)=>{
+router.get("/signout", (req,res)=>{
     try{
         res.clearCookie("t")
         return res.status(200).json({
