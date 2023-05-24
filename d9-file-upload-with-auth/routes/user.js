@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const validators={
     validateName,
@@ -66,7 +67,7 @@ router.post("/signin", async(req,res)=>{
         };
 
         const existingUser = await User.findOne({where:{email}});
-        if(existingUser){
+        if(!existingUser){
             return res.status(400).json({
                 err:"user not found"
             })
@@ -79,6 +80,16 @@ router.post("/signin", async(req,res)=>{
             })
         };
 
+        const payload = {user: { id:existingUser.id}};
+        const bearerToken = await jwt.sign(payload,"SECRET MESSAGE", {
+            expiresIn:360000
+        })
+
+        res.cookie("t",bearerToken,{expire:new Date()+9999});
+
+        return res.status(200).json({
+            bearerToken
+        })
     }catch(e){
         res.status(500).send(e);
     }
