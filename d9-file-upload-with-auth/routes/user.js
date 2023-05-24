@@ -9,7 +9,7 @@ const validators={
     validatePassword
 } = require("../utils/validators");
 
-router.post("/signup",async(req,res)=>{
+router.post("/signup", async(req,res)=>{
     try{
         const { name, email, password, isSeller} = req.body;
         
@@ -30,14 +30,14 @@ router.post("/signup",async(req,res)=>{
             return res.status(400).json({err:"password validate fails"})
         }
 
-        const hashedPassword = await bcrypt.hash(password);
+        const hashedPassword = await bcrypt.hash(password,(saltOrRounds=10));
 
         const user = {
             name,
             email,
             isSeller,
-            password:hashedPassword,
-        }
+            password:hashedPassword
+        };
 
         const createdUser = await User.create(user);
 

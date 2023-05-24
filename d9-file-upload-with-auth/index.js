@@ -3,10 +3,8 @@ const app = express();
 const {connectToDB} = require("./config/db");
 const userRoutes = require("./routes/user");
 
-
-
 const PORT = 1338;
-connectToDB;
+connectToDB();
 
 
 //middlewares
@@ -15,7 +13,7 @@ app.use(express.static("content"));
 app.use(express.urlencoded({extended:false}));
 
 //routes
-app.use("/api/v1/signup",userRoutes);
+app.use("/api/v1/user",userRoutes);
 
 app.listen(PORT, ()=>{
     console.log("server is running");
