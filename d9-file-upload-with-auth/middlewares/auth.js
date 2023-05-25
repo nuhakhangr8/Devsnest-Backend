@@ -6,7 +6,7 @@ const isAuthenticated = async(req,res,next) => {
             const authHeader = req.headers.authorization;
 
             if(!authHeader){
-                res.status(401).json({
+                return res.status(401).json({
                     message:"Authorization headers not found"
                 });
 
@@ -17,7 +17,7 @@ const isAuthenticated = async(req,res,next) => {
 
             const token = authHeader.split(" ") [1];
             if(!token){
-                res.status(401).json({
+                return res.status(401).json({
                     err:"token not found"
                 })
             }
