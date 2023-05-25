@@ -18,16 +18,17 @@ const upload = multer({
     fileFilter:(req, file, cb) =>{
         const fileTypes= /jpg|png|mp4|gif/;
         //regex
-        const mimeType = fileTypes.test(file.mimeType);
-        //mimetype is filetype for images
-        const extname = fileTypes.test(path.extname(file.originalname));
-        //checking the extension
+        // const mimeType = fileTypes.test(file.mimeType);
+        // //mimetype is filetype for images
+        // const extname = fileTypes.test(path.extname(file.originalname));
+        // //checking the extension
 
-        if(mimeType&&extname){
-            return cb(null,true);
-        }
+        // if(mimeType&&extname){
+        //     return cb(null,true);
+        // }
 
-        cb("Only images supported")
+        // cb("Only images supported")
+        return cb(null,true);
     }
 }).single("content");
 //at a time only single file can be uploaded
